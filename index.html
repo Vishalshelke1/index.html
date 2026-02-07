@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Senha ❤️</title>
+
+<style>
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:linear-gradient(135deg,#ff758c,#ff7eb3);
+  color:white;
+  text-align:center;
+}
+.page{
+  display:none;
+  min-height:100vh;
+  padding:25px;
+}
+.page.active{display:block;}
+button{
+  padding:14px 30px;
+  font-size:18px;
+  border:none;
+  border-radius:30px;
+  background:#ff4d6d;
+  color:white;
+  margin-top:25px;
+}
+.typing{
+  font-size:20px;
+  min-height:120px;
+}
+.kiss{
+  position:fixed;
+  font-size:30px;
+  animation:fly 3s linear forwards;
+}
+@keyframes fly{
+  from{bottom:-50px;opacity:1;}
+  to{bottom:100%;opacity:0;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- Romantic music from internet (no mp3 file needed) -->
+<audio id="song" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_6c3f7c6b0a.mp3" preload="auto"></audio>
+
+<div class="page active" id="p1">
+  <h1>Senha ❤️</h1>
+  <div class="typing" id="typing"></div>
+  <button onclick="start()">Continue 💖</button>
+</div>
+
+<div class="page" id="p2">
+  <p>
+    Every love story is beautiful…<br>
+    but ours is my favorite 💫<br><br>
+    You are my smile,<br>
+    my peace,<br>
+    my home ❤️
+  </p>
+  <button onclick="show('p3')">Next ✨</button>
+</div>
+
+<div class="page" id="p3">
+  <p style="font-size:22px;">
+    Senha…<br><br>
+    Will you be mine forever? 💍
+  </p>
+  <button onclick="yes()">YES 💋</button>
+</div>
+
+<div class="page" id="final">
+  <h1>Senha ❤️</h1>
+  <p>
+    You chose me…<br>
+    and I choose you 💖<br><br>
+    Today, tomorrow,<br>
+    and always 🌹
+  </p>
+</div>
+
+<script>
+const text =
+"Some moments change everything...\n\n" +
+"Some people change your life...\n\n" +
+"Senha, you changed mine ❤️";
+
+let i=0;
+
+function start(){
+  document.getElementById("song").play().catch(()=>{});
+  typeText();
+  show("p2");
+}
+
+function typeText(){
+  if(i < text.length){
+    document.getElementById("typing").innerHTML +=
+      text[i]==="\n" ? "<br>" : text[i];
+    i++;
+    setTimeout(typeText, 50);
+  }
+}
+
+function show(id){
+  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+}
+
+function yes(){
+  show("final");
+  for(let i=0;i<40;i++){
+    let k=document.createElement("div");
+    k.className="kiss";
+    k.innerText="💋";
+    k.style.left=Math.random()*100+"vw";
+    document.body.appendChild(k);
+    setTimeout(()=>k.remove(),3000);
+  }
+}
+</script>
+
+</body>
+  </html>
